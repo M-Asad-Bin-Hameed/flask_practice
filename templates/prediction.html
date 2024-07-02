@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Page</h1>
+        <hr>
+        <!-- Button to go to Home Page -->
+        <div class="button-container">
+            <button onclick="location.href='/'">Go to Home Page</button>
+        </div>
+        
+        <!-- Form to predict -->
+        <form action="/run_prediction" method="post">
+            {% for column_name, field_type, unique_values in columns_info %}
+                <label for="{{ column_name }}">{{ column_name.capitalize() }}:</label>
+                {% if field_type == 'number' %}
+                    <input type="number" id="{{ column_name }}" name="{{ column_name }}" required><br><br>
+                {% elif field_type == 'text' %}
+                    <input type="text" id="{{ column_name }}" name="{{ column_name }}"><br><br>
+                {% elif field_type == 'select' %}
+                    <select id="{{ column_name }}" name="{{ column_name }}">
+                        {% for value in unique_values %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                {% endif %}
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

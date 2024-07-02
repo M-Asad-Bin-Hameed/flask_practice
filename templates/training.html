@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Training Page</h1>
+        <hr>
+        <!-- Button to go to Home Page -->
+        <div class="button-container">
+            <button onclick="location.href='/'">Go to Home Page</button>
+        </div>
+        
+        <!-- Button to start training -->
+        <button id="trainButton">Train Models</button>
+        
+        <!-- Loading spinner -->
+        <div class="loading" id="loadingSpinner"></div>
+        
+        <!-- Training message -->
+        <p id="trainingMessage"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

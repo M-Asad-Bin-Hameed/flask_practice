@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <hr>
+        
+        <!-- Display prediction result -->
+        <div id="prediction-result">
+            <p>Your prediction is: {{ prediction_result }}</p>
+        </div>
+        
+        <!-- Option to predict another entry -->
+        <div class="button-container">
+            <button onclick="location.href='/prediction'">Predict Another Entry</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Page</h1>
+        <hr>
+        <!-- Button to go to Home Page -->
+        <div class="button-container">
+            <button onclick="location.href='/'">Go to Home Page</button>
+        </div>
+        
+        <!-- Form to predict -->
+        <form action="/run_prediction" method="post">
+            <!-- Field 1 (alphabetical) -->
+            <label for="field1">Field 1 (Alphabetical):</label>
+            <input type="text" id="field1" name="field1" pattern="[A-Za-z]+" ><br><br>
+            
+            <!-- Field 2 (numeric) -->
+            <label for="field2">Field 2 (Numeric):</label>
+            <input type="number" id="field2" name="field2" required><br><br>
+            
+            <!-- Field 3 (date) -->
+            <label for="field3">Field 3 (Date):</label>
+            <input type="date" id="field3" name="field3" ><br><br>
+            
+            <!-- Field 4 (email) -->
+            <label for="field4">Field 4 (Email):</label>
+            <input type="email" id="field4" name="field4" ><br><br>
+            
+            <!-- Field 5 (password) -->
+            <label for="field5">Field 5 (Password):</label>
+            <input type="password" id="field5" name="field5" ><br><br>
+            
+            <label for="field6">Select your label:</label>
+            <select id="field6" name="field6">
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+            </select><br><br>
+            
+            <!-- Predict button -->
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Display prediction result -->
+        <div id="prediction-result">
+            {% if prediction_result %}
+                <p>Your prediction is: {{ prediction_result }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
