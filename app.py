@@ -28,7 +28,6 @@ def train_model():
 
 @app.route('/prediction')
 def prediction():
-    prediction_pipeline = PredictionPipeline('configs/data_config.yaml')
     columns_info = get_data_details_for_prediction('artifacts/sample_data.csv')
     logger.info('Rendering prediction page')
     return render_template('prediction.html',
@@ -36,10 +35,10 @@ def prediction():
 
 @app.route('/run_prediction', methods=['POST'])
 def run_prediction():
-
+    prediction_pipeline = PredictionPipeline('configs/data_config.yaml')
     logger.info('Running Prediction')
-    prediction_result = '1'
     field_data = request.form.to_dict()
+    prediction_result = prediction_pipeline.predict(field_data)
     logger.info('Rendering prediction result page')
 
     return render_template('prediction_result.html',

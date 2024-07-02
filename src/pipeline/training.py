@@ -47,18 +47,10 @@ class TrainingPipeline:
             scores['Model'].append(name)
             scores['Train Score'].append(train_score)
             scores['Test Score'].append(test_score)
-
-        # Convert the scores dictionary to a DataFrame
         scores_df = pd.DataFrame(scores)
-
-        # Find the maximum test score and corresponding model
         best_model_name = scores_df.loc[scores_df['Test Score'].idxmax(), 'Model']
         best_model = models[best_model_name]
         save_model(best_model, best_model_name)
-
-        print(scores_df)
-        print("Best Model:", best_model_name)
-        print("Maximum Test Score:", scores_df['Test Score'].max())
         return best_model_name
 
     def perform_regression_training(self, X_train, X_test, y_train, y_test):
